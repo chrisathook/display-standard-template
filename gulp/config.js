@@ -1,5 +1,5 @@
 'use strict';
-var dest = './dist';
+var dest = '.';
 var config = {
   flags: {
     minify: false,
@@ -31,31 +31,17 @@ var config = {
   },
   sprite: {
     collapsed_foreground: {
-      src: './static/toSprite/collapsed/foreground/**/*.png',
+      src: './_toSprite/collapsed/foreground/**/*.png',
       dist_img: dest + '/images/',
       dist_css: './sass/spritesheets',
       prefix: 'collapsed-foreground',
       jpg_conversion:false
     },
     collapsed_background: {
-      src: './static/toSprite/collapsed/background/**/*.png',
+      src: './_toSprite/collapsed/background/**/*.png',
       dist_img: dest + '/images/',
       dist_css: './sass/spritesheets',
       prefix: 'collapsed-background',
-      jpg_conversion:true
-    },
-    expanded_foreground: {
-      src: './static/toSprite/expanded/foreground/**/*.png',
-      dist_img: dest + '/images/',
-      dist_css: './sass/spritesheets',
-      prefix: 'expanded-foreground',
-      jpg_conversion:false
-    },
-    expanded_background: {
-      src: './static/toSprite/expanded/background/**/*.png',
-      dist_img: dest + '/images/',
-      dist_css: './sass/spritesheets',
-      prefix: 'expanded-background',
       jpg_conversion:true
     }
     ,
