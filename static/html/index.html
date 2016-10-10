@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script
+    src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.19.0_643d6911392a3398cb1607993edabfa7_min.js"></script>
+  <script src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="adRoot" class="size-collapsed">
+  <div id="collapsedContainer" class="size-collapsed"></div>
+  <div id="expandedContainer" class="size-collapsed"></div>
+  <div id="expandedPreloader" class="hidden">EXPANDED PRELOADER</div>
+</div>
+<div id="border-top" class="top-collapsed-border"></div>
+<div id="border-left" class="left-collapsed-border"></div>
+<div id="border-right" class="right-collapsed-border"></div>
+<div id="border-bottom" class="bottom-collapsed-border"></div>
+
+<!-- build:js js/vendor.js -->
+<script type="text/javascript" src="../../vendor/VendorStub.js"></script>
+<!-- endbuild -->
+<script type="text/javascript">
+  window.adConfig = {
+    collapsedPartial: './collapsed.html',
+    expandedPartial: './expanded.html',
+    isAutoExpand: true,
+    autoExpandTimer: 8000
+  };
+
+  // remove these lines if the unit is an in-page
+  Enabler.setStartExpanded(window.adConfig.isAutoExpand);
+  Enabler.setExpandingPixelOffsets(0, 0, 970, 500); // This needs to be hardcoded to work in DC, it can't run off config
+  Enabler.setIsMultiDirectional(false);
+
+</script>
+<script src="js/main.build.js"></script>
+<!-- impression pixel -->
+<!--
+<div class="tracking-pixel" >
+
+  <img height="1" width="1" style="border­style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/991916218/?value=0&label=zI7KCIbC2gkQuuH92AM&guid=ON&script=0"/>
+
+</div>-->
+
+</body>
+
+</html>

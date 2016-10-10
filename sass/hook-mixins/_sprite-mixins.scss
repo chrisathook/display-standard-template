@@ -1,0 +1,115 @@
+/*
+The provided mixins are intended to be used with variables directly
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+
+@function doubleGet($master-map,$item-map,$item-prop ) {
+
+  @return map-get( map-get( $master-map , $item-map) , $item-prop)
+}
+
+@mixin sprite-width($master-map,$item-map) {
+  width: doubleGet($master-map , $item-map, 'width');
+}
+
+@mixin sprite-height($master-map,$item-map) {
+  height: doubleGet($master-map , $item-map, 'height');
+}
+
+@mixin sprite-position($master-map,$item-map) {
+
+  background-position: doubleGet($master-map , $item-map, 'offset-x') doubleGet($master-map , $item-map, 'offset-y');
+}
+
+@mixin sprite-image($master-map,$item-map) {
+
+
+  // find map in map then get image param
+  background-image:
+
+
+
+
+      if(
+        doubleGet($master-map , $item-map, 'usejpg'),
+        url(str-replace( doubleGet($master-map , $item-map, 'image'),'.png','.jpg')),
+        url(doubleGet($master-map , $item-map, 'image'))
+        )
+
+
+
+
+}
+
+@mixin sprite($master-map,$item-map) {
+  @include sprite-image($master-map,$item-map);
+  @include sprite-position($master-map,$item-map);
+  @include sprite-width($master-map,$item-map);
+  @include sprite-height($master-map,$item-map);
+}
+
+
+// retina extensions
+@mixin sprite-width-retina($master-map,$item-map) {
+
+  width: doubleGet($master-map , $item-map, 'width')/2;
+}
+
+@mixin sprite-height-retina($master-map,$item-map) {
+
+  height: doubleGet($master-map , $item-map, 'height')/2;
+}
+@mixin sprite-scale-retina($master-map,$item-map) {
+
+
+  background-size: doubleGet($master-map , $item-map, 'total-width')/2 doubleGet($master-map , $item-map, 'total-height')/2 ;
+}
+
+
+
+@mixin sprite-retina($master-map,$item-map) {
+  @include sprite-image($master-map,$item-map);
+  @include sprite-width-retina($master-map,$item-map);
+  @include sprite-height-retina($master-map,$item-map);
+  @include sprite-scale-retina($master-map,$item-map);
+}
