@@ -10,9 +10,10 @@ $collapsed-height: 250px;
 
 // color vars
 $white: #FFFFFF;
-$whitetrans: rgba(255, 255, 255, 0);
+$whitetrans: rgba(255, 255, 255, 0.01);
 $grey: #666666;
-$red: #000000;
+$red: #ff0000;
+$cta-hover: #0000FF;
 
 // spritesheet prefixes
 
@@ -46,9 +47,11 @@ sprite-retina ($collapsed-background-map, 'keep')
 }
 
 .catch-all {
-  background-color: rgba(255, 255, 255, 0.01);
+  background-color: $whitetrans;
   cursor: pointer;
   position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .basic-button {
@@ -80,6 +83,7 @@ sprite-retina ($collapsed-background-map, 'keep')
   top: 0;
   left: 0;
   background-color: $grey;
+  cursor: pointer;
 
 
   img {
@@ -95,11 +99,19 @@ sprite-retina ($collapsed-background-map, 'keep')
 
   .cta {
     @extend .basic-button;
-    width: 100px;
-    height: 50px;
-    left: 300px;
-    top: 150px;
-    background-color: cornflowerblue;
+    width: 80px;
+    height: 20px;
+    background-color: $red;
+    color: $grey;
+    text-align: center;
+    left: 110px;
+    top: 115px;
+
+    &:hover {
+
+        color: $cta-hover;
+
+      }
 
   }
 
