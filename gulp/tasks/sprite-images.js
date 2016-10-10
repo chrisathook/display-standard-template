@@ -44,7 +44,7 @@ module.exports = function (gulp, bs, options, flags) {
       imgStream.pipe(rename(function (path) {
           return path.replace(options.prefix, "__" + options.prefix);
         }))
-        .pipe(gulp.dest(options.dist_img))
+        .pipe(gulp.dest(options.dist_img_source))
         // change file name back and write jpg
         .pipe(rename(function (path) {
                   return path.replace('__', '');
