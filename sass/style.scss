@@ -1,23 +1,17 @@
 @import './hook-mixins/normalize';
 @import "bourbon";
 @import './hook-mixins/sprite-mixins';
-
 @import './spritesheets/sprite-collapsed-background';
 @import './spritesheets/sprite-collapsed-foreground';
-@import './spritesheets/sprite-expanded-background';
-@import './spritesheets/sprite-expanded-foreground';
-
 
 /** set up variables **/
-$collapsed-width: 970px;
+$collapsed-width: 300px;
 $collapsed-height: 250px;
-$expanded-width: 970px;
-$expanded-height: 500px;
 
 // color vars
 $white: #FFFFFF;
 $whitetrans: rgba(255, 255, 255, 0);
-$black: #000000;
+$grey: #666666;
 $red: #000000;
 
 // spritesheet prefixes
@@ -25,8 +19,7 @@ $red: #000000;
 /*
 $collapsed-background-map
 $collapsed-foreground-map
-$expanded-foreground-map
-$expanded-background-map
+
 
 You need to use these functions to display the images
 
@@ -42,23 +35,14 @@ sprite-retina ($collapsed-background-map, 'keep')
 
 */
 
-
 // global
 
-@import './template/border';
+@import 'template/standard-border';
 
 .size-collapsed {
 
-
   height: $collapsed-height;
   width: $collapsed-width;
-}
-
-.size-expanded {
-
-
-  height: $expanded-height;
-  width: $expanded-width;
 }
 
 .catch-all {
@@ -83,68 +67,32 @@ sprite-retina ($collapsed-background-map, 'keep')
 
 }
 
-.tracking-pixel {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  opacity: .01;
-  top: 800px;
-  left: 1000px;
+.invisible {
+  opacity: 0;
 
 }
 
 // Root Scope
 #adRoot {
+  @extend .size-collapsed;
   position: absolute;
   overflow: hidden;
   top: 0;
   left: 0;
+  background-color: $grey;
 
-}
 
-#expandedPreloader {
-
-  @extend .size-expanded;
-  opacity: 0;
-  position: absolute;
-  background-color: yellow;
-  cursor: default;
-  text-align: center;
-
-}
-
-//Collapsed Scope
-#collapsedContainer {
-  @extend #adRoot;
-
-  .content {
-
-    img {
-      position: absolute;
-
-    }
-
-    opacity: 0;
-    background-color: $black;
+  img {
     position: absolute;
-    width: $collapsed-width;
-    height: $collapsed-height;
 
   }
+
   .catch-all {
     @extend .size-collapsed;
     @extend .catch-all;
 
   }
-  .expand {
-    @extend .basic-button;
-    width: 200px;
-    height: 50px;
-    left: 600px;
-    top: 150px;
 
-  }
   .cta {
     @extend .basic-button;
     width: 100px;
@@ -157,69 +105,31 @@ sprite-retina ($collapsed-background-map, 'keep')
 
   .bg-image {
     position: absolute;
-    width: 326px;
-    height: 129px;
-    left: 500px;
+    width: 150px;
+    height: 59px;
+    left: 0;
     background-image: url('../images/logo.jpg');
 
   }
-
-  .yt-video {
-    position: absolute;
-    width: 444px;
-    height: 250px;
-
-  }
-
 
   .logo-sprite-retina {
     @include sprite-retina ($collapsed-background-map, 'keep');
     position: absolute;
     top: 0;
-    left: 325px;
+    left: 20px;
   }
+
   .logo-sprite {
-      @include sprite ($collapsed-background-map, 'keep');
-      position: absolute;
-      top: 0;
-      left: 525px;
-    }
-
-}
-
-//Auto Expand Scope
-#expandedContainer {
-  @extend #adRoot;
-
-  .content {
-
-    @extend .size-expanded;
-    opacity: 0;
-    background-color: $red;
+    @include sprite ($collapsed-background-map, 'keep');
     position: absolute;
-
-    img {
-      position: absolute;
-      left: 400px;
-
-    }
-
-    .catch-all {
-      @extend .size-expanded;
-      @extend .catch-all;
-
-    }
-
-    .cta {
-      @extend .basic-button;
-      width: 100px;
-      height: 50px;
-      left: 100px;
-      top: 150px;
-      background-color: blue;
-
-    }
-
+    top: 0;
+    left: 40px;
   }
 
 }
+
+
+
+
+
+

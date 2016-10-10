@@ -4,9 +4,7 @@
     console.log('Hello World ' + bowser.name + ' ' + bowser.version);
     var api = {};
     var rootSource = null;
-
     var currentAnimationKill = null;
-
     var firstRun = false;
     var buildRoot = function () {
       var newRoot = rootSource.cloneNode(true);
@@ -16,18 +14,22 @@
     var show = function () {
       var toShow = document.querySelectorAll('.invisible');
       for (var i = 0; i < toShow.length; i++) {
-        var obj = toShow[i];
-        obj.classList.remove('invisible');
+        toShow[i].classList.remove('invisible');
+      }
+      var unhide = document.querySelectorAll('.hidden');
+      for (var j = 0; j < unhide.length; j++) {
+        unhide[j].classList.remove('hidden');
       }
     };
     api.init = function () {
-
-      if (firstRun) { return}
+      if (firstRun) {
+        return
+      }
       firstRun = true;
       console.log('ad int');
       show();
       rootSource = document.getElementById("adRoot").cloneNode(true);
-      currentAnimationKill =Animation();
+      currentAnimationKill = Animation();
     };
     api.replay = function () {
       currentAnimationKill();

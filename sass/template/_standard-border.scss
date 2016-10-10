@@ -1,0 +1,50 @@
+.border {
+
+  background-color: black;
+  position: absolute;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+
+}
+
+.left-collapsed-border {
+
+  @extend .border;
+  height: $collapsed-height;
+
+
+}
+
+
+.right-collapsed-border {
+
+  @extend .border;
+  height: $collapsed-height;
+  left: $collapsed-width - 1;
+
+
+}
+
+
+
+.top-collapsed-border {
+
+  @extend .border;
+  width: $collapsed-width;
+
+
+
+}
+
+
+
+.bottom-collapsed-border {
+
+  @extend .border;
+  width: $collapsed-width;
+  top: $collapsed-height - 1;
+
+
+}
+
