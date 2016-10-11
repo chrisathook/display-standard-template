@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="ad.size" content="width=300,height=250">
+  <title>HTML5 Template DC AdWords</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="https://tpc.googlesyndication.com/pagead/gadgets/html5/api/exitapi.js"></script>
+</head>
+<body>
+<div id="adRoot" class="invisible" onclick="ExitApi.exit()">
+  <div id="catchAll"></div>
+  <div id="cta">click here</div>
+</div>
+<div id="border-top" class="top-collapsed-border invisible"></div>
+<div id="border-left" class="left-collapsed-border invisible"></div>
+<div id="border-right" class="right-collapsed-border invisible"></div>
+<div id="border-bottom" class="bottom-collapsed-border invisible"></div>
+<!-- build:js combined.js -->
+<script src="libs/vendor/bowser.min.js"></script>
+<script src="libs/vendor/greensock/TweenMax.min.js"></script>
+<script src="libs/Animation.js"></script>
+<script src="libs/Ad.js"></script>
+<!-- endbuild -->
+<script type="text/javascript">
+  window.clickHandler = function () {
+    return 'Handler is silent';
+  };
+  window.onload = window.ad.init;
+</script>
+</body>
+</html>
