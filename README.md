@@ -63,7 +63,7 @@ The system combines all local JS files during the final build. Any files include
 
 #### Platform Detection
 
-Platform detection is provided by [bowser.js[(https://github.com/ded/bowser).
+Platform detection is provided by [bowser.js](https://github.com/ded/bowser).
 
 ### Configuring The Ad
 
