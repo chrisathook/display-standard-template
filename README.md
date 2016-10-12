@@ -13,6 +13,7 @@ A Standard Media Template System. The templates support most major AdKit platfor
 If you don't have gulp 4 installed globally do the following.
 
 `npm install gulpjs/gulp-cli -g`
+
 `npm install github:gulpjs/gulp#4.0 -g`
 
 
