@@ -34,6 +34,9 @@ when new images are placed in *static/_toSprite* the spritesheets and their sass
 
 `sprite-retina ($collapsed-background-map, 'keep')`
 
+#### SASS Mixins
+
+Utility Mixins are provided by [Bourbon.io](http://bourbon.io/).
 
 ### Images
 
@@ -43,7 +46,7 @@ images for the spritesheets should go in */_toSprite*. Regular images go in */im
 
 All Javascript goes in */libs*. **Ad.js** is the entry point and **Animation.js** is where all the animation should be done. Place all 3rd party libs in */libs/vendor*.
 
-#### Javascript Concantination
+#### Javascript Concatenation
 The system combines all local JS files during the final build. Any files included between the 2 html comments `<!-- build:js combined.js -->` and `<!-- endbuild -->` will be combined in the order they are specified in index.html.
 
 ><!-- build:js combined.js -->
@@ -57,6 +60,10 @@ The system combines all local JS files during the final build. Any files include
 ><script src="libs/Ad.js"></script>
 
 ><!-- endbuild -->
+
+#### Platform Detection
+
+Platform detection is provided by [bowser.js[(https://github.com/ded/bowser).
 
 ### Configuring The Ad
 
