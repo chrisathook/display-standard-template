@@ -32,8 +32,6 @@ sprite ($collapsed-background-map, 'keep');
 This does a 2X sprite. 50% of image in spritesheet. 2:1 Provide the map and the image name
 sprite-retina ($collapsed-background-map, 'keep')
 
-
-
 */
 
 // global
@@ -85,7 +83,6 @@ sprite-retina ($collapsed-background-map, 'keep')
   background-color: $grey;
   cursor: pointer;
 
-
   img {
     position: absolute;
 
@@ -109,9 +106,9 @@ sprite-retina ($collapsed-background-map, 'keep')
 
     &:hover {
 
-        color: $cta-hover;
+      color: $cta-hover;
 
-      }
+    }
 
   }
 
