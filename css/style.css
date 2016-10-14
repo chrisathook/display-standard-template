@@ -190,7 +190,7 @@ sprite-retina ($collapsed-background-map, 'keep')
 .shown {
   display: block; }
 
-.invisible {
+.invisible, #adRoot {
   opacity: 0; }
 
 #adRoot {
