@@ -1,7 +1,8 @@
 'use strict';
 (function () {
   var Ad = function () {
-    console.log('Hello World ' + bowser.name + ' ' + bowser.version);
+
+    try {console.log('Hello World ' + bowser.name + ' ' + bowser.version);}catch (err){}
     var api = {};
     var rootSource = null;
     var currentAnimationKill = null;
