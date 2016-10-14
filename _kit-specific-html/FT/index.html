@@ -3,23 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="template.type" content="FlashTalking">
   <meta name="bundle.static" content="in.folder">
   <meta name="ad.size" content="width=300,height=250">
   <title>HTML5 Template FlashTalking</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div id="adRoot" class="invisible">
-  <div id="catchAll"></div>
-  <div id="cta">click here</div>
+<div id="adRoot">
+  <div class="bg-image"></div>
+  <div class="logo-sprite"></div>
+  <div class="logo-sprite-retina"></div>
+  <div id="catchAll" class="catch-all hidden"></div>
+  <div id="cta" class="cta hidden">click here!!!</div>
 </div>
 <div id="border-top" class="top-collapsed-border invisible"></div>
 <div id="border-left" class="left-collapsed-border invisible"></div>
 <div id="border-right" class="right-collapsed-border invisible"></div>
 <div id="border-bottom" class="bottom-collapsed-border invisible"></div>
 <!-- build:js combined.js -->
-<script src="libs/vendor/bowser.min.js"></script>
-<script src="libs/vendor/greensock/TweenMax.min.js"></script>
+<script src="libs/vendor/bowser.min.js"></script> <!-- If you don't need this you can remove it -->
+<script src="libs/vendor/greensock/TweenLite.min.js"></script>
+<script src="libs/vendor/greensock/TimelineLite.min.js"></script>
+<script src="libs/vendor/greensock/plugins/CSSPlugin.min.js"></script>
 <script src="libs/Animation.js"></script>
 <script src="libs/Ad.js"></script>
 <!-- endbuild -->
