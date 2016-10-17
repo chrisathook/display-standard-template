@@ -9,21 +9,34 @@ At the bottom of this section, we provide information about the spritesheet itse
 */
 
 $collapsed-background-map: (
-keep: (
-  name: 'keep',
+keep-copy: (
+  name: 'keep - Copy',
   x: 0px,
   y: 0px,
   offset-x: 0px,
   offset-y: 0px,
   width: 4px,
   height: 4px,
-  total-width: 4px,
+  total-width: 12px,
+  total-height: 4px,
+  image: '../images/collapsed-background-sprite.png',
+  usejpg: true
+),
+keep: (
+  name: 'keep',
+  x: 8px,
+  y: 0px,
+  offset-x: -8px,
+  offset-y: 0px,
+  width: 4px,
+  height: 4px,
+  total-width: 12px,
   total-height: 4px,
   image: '../images/collapsed-background-sprite.png',
   usejpg: true
 ),
 spritesheet: (
-  width: 4px,
+  width: 12px,
   height: 4px,
   image: '../images/collapsed-background-sprite.png'
 )

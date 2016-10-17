@@ -82,3 +82,12 @@ Dimensions need to be set in 2 places.
 * /sass/styles.scss : $collapsed-width: 300px; $collapsed-height: 250px;
 
 If you are using the FT version of the template then the size must also be set in /manifest.js
+
+### linting
+
+The template includes a configuration file for use with sass-lint based linters.
+
+#### Install Linter for [ATOM IDE](https://atom.io/)
+
+* install Atom
+* In a terminal enter `apm install linter` then `apm install linter-sass-lint`

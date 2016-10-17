@@ -222,13 +222,13 @@ sprite-retina ($collapsed-background-map, 'keep')
     background-image: url("../images/collapsed-background-sprite.jpg");
     width: 2px;
     height: 2px;
-    background-size: 2px 2px;
+    background-size: 6px 2px;
     position: absolute;
     top: 0;
     left: 20px; }
   #adRoot .logo-sprite {
     background-image: url("../images/collapsed-background-sprite.jpg");
-    background-position: 0px 0px;
+    background-position: -8px 0px;
     width: 4px;
     height: 4px;
     position: absolute;
