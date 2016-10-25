@@ -1,8 +1,7 @@
 @import './hook-mixins/normalize';
-@import "bourbon";
-@import './hook-mixins/sprite-mixins';
-@import './spritesheets/sprite-collapsed-background';
-@import './spritesheets/sprite-collapsed-foreground';
+@import './libsass-compass/compass';
+@import './libsass-compass/compass/css3/transform';
+@import './hook-mixins/hook-process';
 
 /** set up variables **/
 $collapsed-width: 300px;
@@ -24,7 +23,6 @@ $collapsed-foreground-map
 
 You need to use these functions to display the images
 
-!!! when the spritesheet is run all _ are converted to - so logo_image.png is logo-image
 
 This does a 1X sprite. 100% size of image in spritesheet.  Provide the map and the image name
 sprite ($collapsed-background-map, 'keep');

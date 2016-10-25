@@ -138,7 +138,6 @@ $collapsed-foreground-map
 
 You need to use these functions to display the images
 
-!!! when the spritesheet is run all _ are converted to - so logo_image.png is logo-image
 
 This does a 1X sprite. 100% size of image in spritesheet.  Provide the map and the image name
 sprite ($collapsed-background-map, 'keep');
@@ -220,9 +219,19 @@ sprite-retina ($collapsed-background-map, 'keep')
     background-image: url("../images/logo.jpg"); }
   #adRoot .logo-sprite-retina {
     background-image: url("../images/collapsed-background-sprite.jpg");
-    width: 2px;
-    height: 2px;
-    background-size: 2px 2px;
+    background-position: 0px 0px;
+    width: 4px;
+    height: 4px;
+    -webkit-transform-origin: left top;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    transform-origin: left top;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
     position: absolute;
     top: 0;
     left: 20px; }

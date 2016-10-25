@@ -37,7 +37,7 @@ when new images are placed in *static/_toSprite* the spritesheets and their sass
 
 #### SASS Mixins
 
-Utility Mixins are provided by [Bourbon.io](http://bourbon.io/).
+Utility Mixins are provided by [compass-mixins](https://github.com/Igosuki/compass-mixins). These mixins are for the LibSass compiler while trying to be as close as possible to the original [Ruby Compass Mixins](http://compass-style.org/reference/compass/css3/).
 
 ### Images
 
