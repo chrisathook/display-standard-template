@@ -39,10 +39,33 @@
   window.clickHandler = function () {
     Enabler.exit('exit');
   };
-  if (Enabler.isVisible() === true) {
-    window.ad.init();
+  var adVisibleFunc = function () {
+    if (Enabler.isVisible() === true) {
+      window.ad.init();
+    } else {
+      Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, window.ad.init);
+    }
+  }
+  var pageLoadedFunc = function () {
+    console.log("Enabler PAGE_LOADED");
+    if (!Enabler.isVisible()) {
+      Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, adVisibleFunc);
+    } else {
+      adVisibleFunc();
+    }
+  };
+  var enablerInitFunc = function () {
+    console.log("Enabler INIT");
+    if (!Enabler.isPageLoaded()) {
+      Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, pageLoadedFunc);
+    } else {
+      pageLoadedFunc();
+    }
+  };
+  if (!Enabler.isInitialized()) {
+    Enabler.addEventListener(studio.events.StudioEvent.INIT, enablerInitFunc);
   } else {
-    Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, window.ad.init);
+    enablerInitFunc();
   }
 </script>
 </body>

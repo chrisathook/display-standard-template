@@ -9,7 +9,7 @@
   <meta name="ad.fileSize" content="200"><!--File Size of Final Zip in Kilobytes-->
   <meta name="ad.numFiles" content="15"><!--Don't Edit-->
   <meta name="ad.staticFileSize" content="40"><!--File Size of static backup in Kilobytes-->
-  <title>HTML5 Template DC Studio  </title>
+  <title>HTML5 Template DC Studio </title>
   <link inline rel="stylesheet" type="text/css" href="css/style.css">
   <script type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 </head>
@@ -28,7 +28,8 @@
 <!--Uncomment this to use CDN version of Greensock, remove local version if you do this.  -->
 <!--<script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.19.0_643d6911392a3398cb1607993edabfa7_min.js"></script>-->
 <!-- build:js combined.js -->
-<script type="text/javascript" src="libs/vendor/bowser.min.js"></script> <!-- If you don't need this you can remove it -->
+<script type="text/javascript" src="libs/vendor/bowser.min.js"></script>
+<!-- If you don't need this you can remove it -->
 <script type="text/javascript" src="libs/vendor/greensock/TweenLite.min.js"></script>
 <script type="text/javascript" src="libs/vendor/greensock/TimelineLite.min.js"></script>
 <script type="text/javascript" src="libs/vendor/greensock/plugins/CSSPlugin.min.js"></script>
@@ -39,10 +40,33 @@
   window.clickHandler = function () {
     Enabler.exit('exit');
   };
-  if (Enabler.isVisible() === true) {
-    window.ad.init();
+  var adVisibleFunc = function () {
+    if (Enabler.isVisible() === true) {
+      window.ad.init();
+    } else {
+      Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, window.ad.init);
+    }
+  }
+  var pageLoadedFunc = function () {
+    console.log("Enabler PAGE_LOADED");
+    if (!Enabler.isVisible()) {
+      Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, adVisibleFunc);
+    } else {
+      adVisibleFunc();
+    }
+  };
+  var enablerInitFunc = function () {
+    console.log("Enabler INIT");
+    if (!Enabler.isPageLoaded()) {
+      Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, pageLoadedFunc);
+    } else {
+      pageLoadedFunc();
+    }
+  };
+  if (!Enabler.isInitialized()) {
+    Enabler.addEventListener(studio.events.StudioEvent.INIT, enablerInitFunc);
   } else {
-    Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, window.ad.init);
+    enablerInitFunc();
   }
 </script>
 </body>
