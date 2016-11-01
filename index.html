@@ -38,7 +38,7 @@
 <!-- endbuild -->
 <script type="text/javascript">
   window.clickHandler = function () {
-    Enabler.exit('exit');
+    Enabler.exit('exit','https://www.google.com'); // set initial URL here, can still be overwritten in DC Studio or DCM
   };
   var adVisibleFunc = function () {
     if (Enabler.isVisible() === true) {
