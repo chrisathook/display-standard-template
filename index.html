@@ -41,12 +41,10 @@
     Enabler.exit('exit','https://www.google.com'); // set initial URL here, can still be overwritten in DC Studio or DCM
   };
   var adVisibleFunc = function () {
-    if (Enabler.isVisible() === true) {
+    console.log("Enabler VISIBLE");
       window.ad.init();
-    } else {
-      Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, window.ad.init);
-    }
-  }
+
+  };
   var pageLoadedFunc = function () {
     console.log("Enabler PAGE_LOADED");
     if (!Enabler.isVisible()) {
