@@ -3,10 +3,20 @@
   var Animation = function () {
     // do all your animation in this function. Including any calls to get DOM elements.
     var render = function () {
+      var ctaButton = document.getElementById('cta');
       var onComplete = function () {
         console.log('animation complete');
-        document.getElementById('cta').addEventListener('click', clickHandler);
-        document.getElementById('catchAll').addEventListener('click', clickHandler)
+        var overHandler = function () {
+          ctaButton.classList.add('cta-hover')
+        };
+        var outHandler = function () {
+          ctaButton.classList.remove('cta-hover')
+        };
+        document.getElementById('catchAll').addEventListener('click', clickHandler);
+        ctaButton.addEventListener('click', clickHandler);
+        ctaButton.addEventListener('click', outHandler);
+        ctaButton.addEventListener('mouseover', overHandler);
+        ctaButton.addEventListener('mouseout', outHandler);
       };
       var onStart = function () {
       };

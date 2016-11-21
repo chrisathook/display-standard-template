@@ -105,11 +105,13 @@ sprite-retina ($collapsed-background-map, 'keep')
     left: 110px;
     top: 115px;
 
-    &:hover {
 
-      color: $cta-hover;
 
-    }
+  }
+
+  .cta-hover {
+
+    color: $cta-hover;
 
   }
 
