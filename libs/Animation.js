@@ -12,13 +12,14 @@
         var outHandler = function () {
           ctaButton.classList.remove('cta-hover')
         };
-        document.getElementById('catchAll').addEventListener('click', clickHandler);
-        ctaButton.addEventListener('click', clickHandler);
-        ctaButton.addEventListener('click', outHandler);
+        
         ctaButton.addEventListener('mouseover', overHandler);
         ctaButton.addEventListener('mouseout', outHandler);
       };
       var onStart = function () {
+        document.getElementById('catchAll').addEventListener('click', clickHandler);
+        ctaButton.addEventListener('click', clickHandler);
+        ctaButton.addEventListener('click', outHandler);
       };
       var tl = null;
       // make additional timeline here.
