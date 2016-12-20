@@ -210,7 +210,8 @@ sprite-retina ($collapsed-background-map, 'keep')
     left: 110px;
     top: 115px; }
   #adRoot .cta-hover {
-    color: #0000FF; }
+    color: #ffffff;
+    background-color: #0000FF; }
   #adRoot .bg-image {
     position: absolute;
     width: 150px;
