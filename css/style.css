@@ -113,6 +113,25 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 <i class="icon icon-home"></i>
 */
 /*
+
+@mixin sprite-retina($master-map,$item-map) {
+  @include sprite-image($master-map,$item-map);
+  @include sprite-position($master-map,$item-map);
+  @include sprite-width($master-map,$item-map);
+  @include sprite-height($master-map,$item-map);
+    -webkit-transform-origin: left top;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    transform-origin: left top;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+}
+*/
+/*
 SCSS variables are information about icon's compiled state, stored under its original file name
 
 .icon-home {
@@ -221,18 +240,9 @@ sprite-retina ($collapsed-background-map, 'keep')
   #adRoot .logo-sprite-retina {
     background-image: url("../images/collapsed-background-sprite.jpg");
     background-position: 0px 0px;
-    width: 4px;
-    height: 4px;
-    -webkit-transform-origin: left top;
-    -moz-transform-origin: left top;
-    -ms-transform-origin: left top;
-    -o-transform-origin: left top;
-    transform-origin: left top;
-    -webkit-transform: scale(0.5);
-    -moz-transform: scale(0.5);
-    -ms-transform: scale(0.5);
-    -o-transform: scale(0.5);
-    transform: scale(0.5);
+    width: 2px;
+    height: 2px;
+    background-size: 2px 2px;
     position: absolute;
     top: 0;
     left: 20px; }

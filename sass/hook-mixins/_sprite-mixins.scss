@@ -89,23 +89,39 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 }
 
 
+
 // retina extensions
 @mixin sprite-width-retina($master-map,$item-map) {
 
-  width: doubleGet($master-map , $item-map, 'width')/2;
+  width: floor(doubleGet($master-map , $item-map, 'width')/2);
 }
 
 @mixin sprite-height-retina($master-map,$item-map) {
 
-  height: doubleGet($master-map , $item-map, 'height')/2;
+  height: floor(doubleGet($master-map , $item-map, 'height')/2);
 }
+@mixin sprite-position-retina($master-map,$item-map) {
+
+  background-position: floor(doubleGet($master-map , $item-map, 'offset-x')/2) floor(doubleGet($master-map , $item-map, 'offset-y')/2);
+}
+
 @mixin sprite-scale-retina($master-map,$item-map) {
 
 
-  background-size: doubleGet($master-map , $item-map, 'total-width')/2 doubleGet($master-map , $item-map, 'total-height')/2 ;
+  background-size: floor(doubleGet($master-map , $item-map, 'total-width')/2) floor(doubleGet($master-map , $item-map, 'total-height')/2) ;
 }
 
 
+@mixin sprite-retina($master-map,$item-map) {
+  @include sprite-image($master-map,$item-map);
+  @include sprite-position-retina($master-map,$item-map);
+  @include sprite-width-retina($master-map,$item-map);
+  @include sprite-height-retina($master-map,$item-map);
+  @include sprite-scale-retina($master-map,$item-map);
+}
+
+
+/*
 
 @mixin sprite-retina($master-map,$item-map) {
   @include sprite-image($master-map,$item-map);
@@ -123,3 +139,4 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
     -o-transform: scale(0.5);
     transform: scale(0.5);
 }
+*/
