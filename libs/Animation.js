@@ -30,8 +30,9 @@
         onComplete: onComplete,
         onStart: onStart
       });
-      tl.add(TweenLite.to('#adRoot', 1, {opacity: 1}));
-      //customize this function so that when called it kills all animation timelines, etc.
+      // shows the main #adRoot container. feel free to replace with a tween if you'd like to transition the whole ad into visibility.
+      tl.add(TweenLite.set('#adRoot', {opacity: 1}));
+      // customize this function so that when called it kills all animation timelines, etc.
       return function destroy() {
         console.log('Kill Animations');
         tl.kill();
