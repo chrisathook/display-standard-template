@@ -1,6 +1,6 @@
 /*!
- * VERSION: 0.1.0
- * DATE: 2016-12-05
+ * VERSION: 0.1.1
+ * DATE: 2017-04-10
  * 
  * @author: Craig Albert
  **/
@@ -10,6 +10,7 @@ var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Const
 var isIE = /*@cc_on!@*/false || !!document.documentMode;
 var isEdge = !isIE && !!window.StyleMedia;
 var isChrome = !!window.chrome && !!window.chrome.webstore;
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window; //helps ensure compatibility with AMD/RequireJS and CommonJS/Node
 (_gsScope._gsQueue || (_gsScope._gsQueue = [])).push( function() {
@@ -24,7 +25,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		overwriteProps: ["rotation", "z", "transformPerspective"],
 		init: function(target, value, tween, index) {
 
-			if(!value) {
+			if(!value || isMobile) {
 				return false;
 			}
 
