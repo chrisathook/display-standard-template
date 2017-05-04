@@ -1,6 +1,10 @@
 'use strict';
 (function () {
   var Animation = function () {
+    
+    var smoothdivs = document.getElementById('adRoot').querySelectorAll('div');
+    TweenLite.set(smoothdivs, {smoothify: true});
+    
     // do all your animation in this function. Including any calls to get DOM elements.
     var render = function () {
       var ctaButton = document.getElementById('cta');
