@@ -186,7 +186,7 @@ sprite-retina ($collapsed-background-map, 'keep')
   width: 300px;
   top: 249px; }
 
-.size-collapsed, #adRoot, #adRoot .catch-all {
+.size-collapsed, #adRoot, #adRoot .catch-all, #adRoot .injected-svg {
   height: 250px;
   width: 300px; }
 
@@ -254,3 +254,5 @@ sprite-retina ($collapsed-background-map, 'keep')
     position: absolute;
     top: 0;
     left: 40px; }
+  #adRoot .injected-svg {
+    position: absolute; }

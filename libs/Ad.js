@@ -22,12 +22,35 @@
         unhide[j].classList.remove('hidden');
       }
     };
+
+    var writeHTML = function (div, text) {
+      div.innerHTML = text;
+      console.log('loading done');
+    };
+
+    var processSVG = function (svgObj){
+
+        for (var prop in svgObj) {
+
+        writeHTML (
+          document.getElementById(prop),
+          svgObj[prop]
+          )
+
+        
+
+        }
+
+
+    };
+
     api.init = function () {
       if (firstRun) {
         return
       }
       firstRun = true;
       console.log('ad int');
+      processSVG (window.bannerSvgData);
       show();
       rootSource = document.getElementById("adRoot").cloneNode(true);
       currentAnimationKill = Animation();

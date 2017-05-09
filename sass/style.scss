@@ -138,6 +138,13 @@ sprite-retina ($collapsed-background-map, 'keep')
     left: 40px;
   }
 
+  .injected-svg {
+
+    position: absolute;
+    @extend .size-collapsed;
+
+  }
+
 }
 
 

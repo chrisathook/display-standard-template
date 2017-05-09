@@ -1,7 +1,7 @@
 'use strict';
 (function () {
   
-  window.bannerSvgData=JSON.parse( DATA_HERE);
+  window.bannerSvgData= DATA_HERE;
   
   
 
