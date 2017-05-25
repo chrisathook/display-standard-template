@@ -25,20 +25,18 @@
 
     var writeHTML = function (div, text) {
       div.innerHTML = text;
-      console.log('loading done');
+      console.log('loading done',div.id);
     };
 
     var processSVG = function (svgObj){
 
         for (var prop in svgObj) {
-
-        writeHTML (
-          document.getElementById(prop),
-          svgObj[prop]
-          )
-
-        
-
+          try {
+            writeHTML (document.getElementById(prop),svgObj[prop])
+          }catch (err){
+               console.error('SVG Loading Failed',prop+".svg");
+               console.error (err);
+          }
         }
 
 
