@@ -4,17 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="template.type" content="FlashTalking">
-  <meta name="bundle.static" content="in.folder"><!--Valid values are "in.zip" and "in.folder" -->
-  <meta name="ad.size" content="width=300,height=250"><!--Dimensions in Pixels-->
-  <meta name="ad.fileSize" content="200"><!--File Size of Final Zip in Kilobytes-->
-  <meta name="ad.numFiles" content="15"><!--Don't Edit-->
-  <meta name="ad.staticFileSize" content="40"><!--File Size of static backup in Kilobytes-->
-  <meta name="ad.compression" content="60"><!--compression for jpeg sprites-->
-  <meta name="ad.minifyhtml" content="true"><!--minify html file  set to false for sizmek-->
+  <meta name="bundle.static" content="in.folder">
+  <meta name="ad.size" content="width=300,height=250">
+  <meta name="ad.fileSize" content="200">
+  <meta name="ad.numFiles" content="15">
+  <meta name="ad.staticFileSize" content="40">
+  <meta name="ad.compression" content="60">
+  <meta name="ad.minifyhtml" content="true">
   <title>HTML5 Template FlashTalking</title>
   <link inline rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<div id="image-hack"></div>
 <div id="adRoot">
   <div class="bg-image"></div>
   <div class="logo-sprite"></div>
@@ -27,17 +28,14 @@
 <div id="border-left" class="left-collapsed-border invisible"></div>
 <div id="border-right" class="right-collapsed-border invisible"></div>
 <div id="border-bottom" class="bottom-collapsed-border invisible"></div>
-<!--Uncomment this to use CDN version of Greensock, remove local version if you do this.  -->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>-->
-<!-- build:js combined.js -->
-<script type="text/javascript" src="libs/vendor/bowser.min.js"></script><!-- If you don't need this you can remove it -->
+</script>-->
+<script type="text/javascript" src="libs/vendor/bowser.min.js"></script>
 <script type="text/javascript" src="libs/vendor/greensock/TweenMax.min.js"></script>
 <script type="text/javascript" src="libs/vendor/SmoothifyPlugin.js"></script>
 <script type="text/javascript" src="libs/svglib.js"></script>
+<script type="text/javascript" src="libs/svg-img-loader.js"></script>
 <script type="text/javascript" src="libs/Animation.js"></script>
 <script type="text/javascript" src="libs/Ad.js"></script>
-<!-- endbuild -->
-<!-- for FT to work all this needs to be below body -->
 <script src="https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js"></script>
 <script type="text/javascript">
   var myFT = new FT;
