@@ -1,8 +1,10 @@
 'use strict';
 (function () {
   var Ad = function () {
-
-    try {console.log('Hello World ' + bowser.name + ' ' + bowser.version);}catch (err){}
+    try {
+      console.log('Hello World ' + bowser.name + ' ' + bowser.version);
+    } catch (err) {
+    }
     var api = {};
     var rootSource = null;
     var currentAnimationKill = null;
@@ -22,36 +24,34 @@
         unhide[j].classList.remove('hidden');
       }
     };
-
     var writeHTML = function (div, text) {
       div.innerHTML = text;
-      console.log('loading done',div.id);
+      console.log('loading done', div.id);
     };
-
-    var processSVG = function (svgObj){
-
-        for (var prop in svgObj) {
-          try {
-            writeHTML (document.getElementById(prop),svgObj[prop])
-          }catch (err){
-               console.error('SVG Loading Failed',prop+".svg");
-               console.error (err);
-          }
+    var processSVG = function (svgObj) {
+      for (var prop in svgObj) {
+        try {
+          writeHTML(document.getElementById(prop), svgObj[prop])
+        } catch (err) {
+          console.error('SVG Loading Failed', prop + ".svg");
+          console.error(err);
         }
-
-
+      }
     };
-
     api.init = function () {
       if (firstRun) {
         return
       }
       firstRun = true;
       console.log('ad int');
-      processSVG (window.bannerSvgData);
-      show();
-      rootSource = document.getElementById("adRoot").cloneNode(true);
-      currentAnimationKill = Animation();
+      var callback = function () {
+        processSVG(window.bannerSvgData);
+        show();
+        rootSource = document.getElementById("adRoot").cloneNode(true);
+        currentAnimationKill = Animation();
+      };
+      var loader = window.svgImageLoader;
+      loader(window.bannerSvgData, callback);
     };
     api.replay = function () {
       currentAnimationKill();

@@ -2,48 +2,19 @@
 @import './libsass-compass/compass';
 @import './libsass-compass/compass/css3/transform';
 @import './hook-mixins/hook-process';
-
-/** set up variables **/
 $collapsed-width: 300px;
 $collapsed-height: 250px;
-
-// color vars
 $white: #FFFFFF;
 $whitetrans: rgba(255, 255, 255, 0.01);
 $grey: #666666;
 $red: #ff0000;
 $cta-hover: #0000FF;
-
 $border-color: black;
-
-// spritesheet prefixes
-
-/*
-$collapsed-background-map
-$collapsed-foreground-map
-
-
-You need to use these functions to display the images
-
-
-This does a 1X sprite. 100% size of image in spritesheet.  Provide the map and the image name
-sprite ($collapsed-background-map, 'keep');
-
-This does a 2X sprite. 50% of image in spritesheet. 2:1 Provide the map and the image name
-sprite-retina ($collapsed-background-map, 'keep')
-
-*/
-
-// global
-
 @import 'template/standard-border';
-
 .size-collapsed {
-
   height: $collapsed-height;
   width: $collapsed-width;
 }
-
 .catch-all {
   background-color: $whitetrans;
   cursor: pointer;
@@ -51,29 +22,20 @@ sprite-retina ($collapsed-background-map, 'keep')
   left: 0;
   top: 0;
 }
-
 .basic-button {
   background-color: rgba(255, 150, 255, 1);
   cursor: pointer;
   position: absolute;
 }
-
 .hidden {
   display: none;
-
 }
-
 .shown {
   display: block;
-
 }
-
 .invisible {
   opacity: 0;
-
 }
-
-// Root Scope
 #adRoot {
   @extend .size-collapsed;
   @extend .invisible;
@@ -83,18 +45,13 @@ sprite-retina ($collapsed-background-map, 'keep')
   left: 0;
   background-color: $grey;
   cursor: pointer;
-
   img {
     position: absolute;
-
   }
-
   .catch-all {
     @extend .size-collapsed;
     @extend .catch-all;
-
   }
-
   .cta {
     @extend .basic-button;
     width: 80px;
@@ -104,49 +61,40 @@ sprite-retina ($collapsed-background-map, 'keep')
     text-align: center;
     left: 110px;
     top: 115px;
-
-
-
   }
-
   .cta-hover {
     color: #ffffff;
     background-color: $cta-hover;
-
   }
-
   .bg-image {
     position: absolute;
     width: 150px;
     height: 59px;
     left: 0;
     background-image: url('../images/logo.jpg');
-
   }
-
   .logo-sprite-retina {
     @include sprite-retina ($collapsed-background-map, 'keep');
     position: absolute;
     top: 0;
     left: 20px;
   }
-
   .logo-sprite {
     @include sprite ($collapsed-background-map, 'keep');
     position: absolute;
     top: 0;
     left: 40px;
   }
-
   .abs-banner {
     @extend .size-collapsed;
     position: absolute;
   }
-
 }
-
-
-
-
-
-
+#image-hack {
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: -40px;
+  overflow: hidden;
+}
