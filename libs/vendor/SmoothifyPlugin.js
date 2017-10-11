@@ -1,16 +1,18 @@
 /*!
- * VERSION: 0.1.1
- * DATE: 2017-04-10
+ * VERSION: 0.1.0
+ * DATE: 2016-12-05
  * 
  * @author: Craig Albert
  **/
+var ua = navigator.userAgent.toLowerCase();
 var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
 var isFirefox = typeof InstallTrigger !== 'undefined';
 var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
 var isIE = /*@cc_on!@*/false || !!document.documentMode;
 var isEdge = !isIE && !!window.StyleMedia;
 var isChrome = !!window.chrome && !!window.chrome.webstore;
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+var isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+var isAndroid = /(android)/i.test(navigator.userAgent);
 
 var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(global) !== "undefined") ? global : this || window; //helps ensure compatibility with AMD/RequireJS and CommonJS/Node
 (_gsScope._gsQueue || (_gsScope._gsQueue = [])).push( function() {
@@ -25,18 +27,32 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		overwriteProps: ["rotation", "z", "transformPerspective"],
 		init: function(target, value, tween, index) {
 
-			if(!value || isMobile) {
+			if(!value) {
 				return false;
 			}
 
-			this._target = target; 
+			
+			if (isiOS || isAndroid ) {
+				
+				return false;
+			}
+			
+			this._target = target;
 
-			if (isIE || isSafari || isEdge) {
-				TweenLite.set(target, {"rotation": 0.01, "z": 0, "transformPerspective": 1000});
-			} else {
-				TweenLite.set(target, {"rotation": 0.01, "z": 0.1, "transformPerspective": 1000});
+			var tweenObject = {
+				"rotation": 0.01, 
+				"z": 0.1, 
+				"transformPerspective": 1000
 			}
 
+			if (isIE || isSafari || isEdge) {
+				tweenObject.z = 0;
+			} else if(isFirefox && target.style.outline == "") {
+				tweenObject.outline = "1px solid transparent";
+			}
+				
+			TweenLite.set(target, tweenObject);
+			
 			return true;
 		}
 	});
