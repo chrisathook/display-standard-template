@@ -220,9 +220,9 @@ At the bottom of this section, we provide information about the spritesheet itse
     width: 150px;
     height: 59px;
     left: 0;
-    background-image: url("../images/logo.jpg"); }
+    background-image: url("../img/logo.jpg"); }
   #adRoot .logo-sprite-retina {
-    background-image: url("../images/collapsed-background-sprite.jpg");
+    background-image: url("../img/collapsed-background-sprite.jpg");
     background-position: 0px 0px;
     width: 2px;
     height: 2px;
@@ -231,7 +231,7 @@ At the bottom of this section, we provide information about the spritesheet itse
     top: 0;
     left: 20px; }
   #adRoot .logo-sprite {
-    background-image: url("../images/collapsed-background-sprite.jpg");
+    background-image: url("../img/collapsed-background-sprite.jpg");
     background-position: 0px 0px;
     width: 4px;
     height: 4px;

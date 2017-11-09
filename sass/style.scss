@@ -71,7 +71,7 @@ $border-color: black;
     width: 150px;
     height: 59px;
     left: 0;
-    background-image: url('../images/logo.jpg');
+    background-image: url('../img/logo.jpg');
   }
   .logo-sprite-retina {
     @include sprite-retina ($collapsed-background-map, 'keep');
