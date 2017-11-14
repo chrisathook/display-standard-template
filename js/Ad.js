@@ -38,12 +38,35 @@
         }
       }
     };
-    api.init = function () {
-      if (firstRun) {
+    var bootDynamics = function () {
+      function loadData() {
+        dynamicAd.onready = setUpAd()
+        dynamicAd.init();
+      }
+      
+      function loadPreview(rowNumber, callback) {
+        console.log("loadPreview");
+        dataManager.onready = function () {
+          console.log("loadPreview data loaded");
+          window.previewData = dataManager.data[rowNumber - 1];
+          loadData();
+        };
+        dataManager.init(sheetId, projectId);
+      }
+      
+      if (sheetId === '' || projectId === '') {
+        setUpAd();
         return
       }
-      firstRun = true;
-      console.log('ad int');
+      if (downloadPreview) {
+        loadPreview(previewNumber, loadData);
+      } else if (window.previewData) {
+        loadData()
+      } else {
+        setUpAd();
+      }
+    };
+    var setUpAd = function () {
       var callback = function () {
         processSVG(window.bannerSvgData);
         show();
@@ -52,6 +75,14 @@
       };
       var loader = window.svgImageLoader;
       loader(window.bannerSvgData, callback);
+    };
+    api.init = function () {
+      if (firstRun) {
+        return
+      }
+      firstRun = true;
+      console.log('ad int');
+      bootDynamics();
     };
     api.replay = function () {
       currentAnimationKill();
