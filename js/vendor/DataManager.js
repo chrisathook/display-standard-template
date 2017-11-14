@@ -16,7 +16,7 @@ function DataManager(config) {
 
 	self.loaded = false;
 
-	// https://atomic-byway-131414.appspot.com/?action=getImage&path=/Display_Dynamic_Previewer_WorkArea/7777_Test_Ad&filename=bear.jpg
+
 
 	self.init = function(sheetId, projectId) {
 		console.log('init', sheetId, projectId, sheetId && projectId);

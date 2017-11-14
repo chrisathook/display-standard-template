@@ -35,8 +35,9 @@
 <script type="text/javascript" src="js/vendor/bowser.min.js"></script><!-- If you don't need this you can remove it -->
 <script type="text/javascript" src="js/vendor/greensock/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/vendor/SmoothifyPlugin.js"></script>
-<script type="text/javascript" src="js/vendor/DynamicAd.js"></script>
-<script type="text/javascript" src="js/vendor/DataManager.js"></script>
+<script type="text/javascript" src="js/vendor/DynamicAd.js"></script> <!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DataManager.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DynamicBootloader.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
 <script type="text/javascript" src="js/svglib.js"></script>
 <script type="text/javascript" src="js/svg-img-loader.js"></script>
 <script type="text/javascript" src="js/Animation.js"></script>
@@ -58,7 +59,11 @@
   window.clickHandler = function () {
     return 'Handler is silent';
   };
-  window.onload = window.ad.init;
+  window.onload = function (){
+
+    DynamicBootloader (window.ad.init);
+
+  }
 </script>
 </body>
 </html>

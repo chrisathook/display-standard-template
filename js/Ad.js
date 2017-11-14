@@ -38,34 +38,7 @@
         }
       }
     };
-    var bootDynamics = function () {
-      function loadData() {
-        dynamicAd.onready = setUpAd()
-        dynamicAd.init();
-      }
-      
-      function loadPreview(rowNumber, callback) {
-        console.log("loadPreview");
-        dataManager.onready = function () {
-          console.log("loadPreview data loaded");
-          window.previewData = dataManager.data[rowNumber - 1];
-          loadData();
-        };
-        dataManager.init(sheetId, projectId);
-      }
-      
-      if (sheetId === '' || projectId === '') {
-        setUpAd();
-        return
-      }
-      if (downloadPreview) {
-        loadPreview(previewNumber, loadData);
-      } else if (window.previewData) {
-        loadData()
-      } else {
-        setUpAd();
-      }
-    };
+
     var setUpAd = function () {
       var callback = function () {
         processSVG(window.bannerSvgData);
@@ -82,7 +55,7 @@
       }
       firstRun = true;
       console.log('ad int');
-      bootDynamics();
+      setUpAd();
     };
     api.replay = function () {
       currentAnimationKill();
