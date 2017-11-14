@@ -27,6 +27,10 @@
         ctaButton.addEventListener('click', clickHandler);
         ctaButton.addEventListener('click', outHandler);
       };
+  
+      window.endframe = function () {
+        tl.seek(15)
+      }
       
       var tl = null;
       // make additional timeline here.
