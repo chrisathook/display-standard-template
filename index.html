@@ -35,11 +35,25 @@
 <script type="text/javascript" src="js/vendor/bowser.min.js"></script><!-- If you don't need this you can remove it -->
 <script type="text/javascript" src="js/vendor/greensock/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/vendor/SmoothifyPlugin.js"></script>
+<script type="text/javascript" src="js/vendor/DynamicAd.js"></script>
+<script type="text/javascript" src="js/vendor/DataManager.js"></script>
 <script type="text/javascript" src="js/svglib.js"></script>
 <script type="text/javascript" src="js/svg-img-loader.js"></script>
 <script type="text/javascript" src="js/Animation.js"></script>
 <script type="text/javascript" src="js/Ad.js"></script>
 <!-- endbuild -->
+
+<script type="text/javascript">
+  var dynamicAd = DynamicAd();
+  var dataManager = DataManager();
+  var downloadPreview = false;
+  var previewNumber = 1;
+  var sheetId = "";
+  var projectId = "";
+</script>
+
+
+
 <script type="text/javascript">
   window.clickHandler = function () {
     return 'Handler is silent';
