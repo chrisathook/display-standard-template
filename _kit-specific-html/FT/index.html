@@ -34,6 +34,9 @@
 <script type="text/javascript" src="js/vendor/bowser.min.js"></script><!-- If you don't need this you can remove it -->
 <script type="text/javascript" src="js/vendor/greensock/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/vendor/SmoothifyPlugin.js"></script>
+<script type="text/javascript" src="js/vendor/DynamicAd.js"></script> <!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DataManager.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DynamicBootloader.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
 <script type="text/javascript" src="js/svglib.js"></script>
 <script type="text/javascript" src="js/svg-img-loader.js"></script>
 <script type="text/javascript" src="js/Animation.js"></script>
@@ -46,9 +49,23 @@
     myFT.clickTag(1);
   };
   if (myFT.hasLoaded === true) {
-    window.ad.init();
+    try {
+      DynamicBootloader(window.ad.init);
+    } catch (err) {
+      console.log('Dynamics Engine Not Included, Proceed as standard');
+      window.ad.init()
+    }
   } else {
-    myFT.on("ready", window.ad.init);
+    myFT.on("ready", function (){
+
+      try {
+        DynamicBootloader(window.ad.init);
+      } catch (err) {
+        console.log('Dynamics Engine Not Included, Proceed as standard');
+        window.ad.init()
+      }
+
+    });
   }
 </script>
 </body>

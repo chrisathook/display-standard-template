@@ -19,6 +19,8 @@
 <div id="image-hack"></div>
 <div id="adRoot" onclick="javascript:window.open(window.clickTag)">
   <div class="bg-image"></div>
+  <div id="bgImage"></div>
+  <div id="headline">demo headline</div>
   <div class="logo-sprite"></div>
   <div class="logo-sprite-retina"></div>
   <div id='demoSVG' class='abs-banner'></div>
@@ -35,16 +37,38 @@
 <script type="text/javascript" src="js/vendor/bowser.min.js"></script><!-- If you don't need this you can remove it -->
 <script type="text/javascript" src="js/vendor/greensock/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/vendor/SmoothifyPlugin.js"></script>
+<script type="text/javascript" src="js/vendor/DynamicAd.js"></script> <!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DataManager.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DynamicBootloader.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
 <script type="text/javascript" src="js/svglib.js"></script>
 <script type="text/javascript" src="js/svg-img-loader.js"></script>
 <script type="text/javascript" src="js/Animation.js"></script>
 <script type="text/javascript" src="js/Ad.js"></script>
 <!-- endbuild -->
+
+<script type="text/javascript">
+  var dynamicAd = DynamicAd();
+  var dataManager = DataManager();
+  var downloadPreview = false;
+  var previewNumber = 1;
+  var sheetId = "1Z6z5t91qqYrFblYxC6AnHkP8duHGQrSaw9JoovZyBwI";
+  var projectId = "000_Dynamic_Ad_Template";
+  // var previewData = {}; // DO NOT DELETE - REQUIRED FOR AD GENERATOR
+</script>
+
+
 <script type="text/javascript">
   window.clickHandler = function () {
     return 'Handler is silent';
   };
-  window.onload = window.ad.init;
+  window.onload = function () {
+    try {
+      DynamicBootloader(window.ad.init);
+    } catch (err) {
+      console.log('Dynamics Engine Not Included, Proceed as standard');
+      window.ad.init()
+    }
+  }
 </script>
 </body>
 </html>
