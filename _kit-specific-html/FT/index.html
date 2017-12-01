@@ -44,6 +44,21 @@
 <!-- endbuild -->
 <script src="https://cdn.flashtalking.com/frameworks/js/api/2/8/html5API.js"></script>
 <script type="text/javascript">
+
+  try {
+    var dynamicAd = DynamicAd();
+    var dataManager = DataManager();
+    var downloadPreview = false;
+    var previewNumber = 1;
+    var sheetId = "1Z6z5t91qqYrFblYxC6AnHkP8duHGQrSaw9JoovZyBwI";
+    var projectId = "000_Dynamic_Ad_Template";
+    // var previewData = {}; // DO NOT DELETE - REQUIRED FOR AD GENERATOR
+  } catch (err) {
+    console.log('Dynamics Engine Not Included, Proceed as standard');
+  }
+
+</script>
+<script type="text/javascript">
   var myFT = new FT;
   window.clickHandler = function () {
     myFT.clickTag(1);
