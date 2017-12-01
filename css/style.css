@@ -205,6 +205,11 @@ At the bottom of this section, we provide information about the spritesheet itse
   cursor: pointer; }
   #adRoot img {
     position: absolute; }
+  #adRoot #headline {
+    text-align: center;
+    margin: auto;
+    padding-top: 70px;
+    color: #fff; }
   #adRoot .cta {
     width: 80px;
     height: 20px;
@@ -216,11 +221,13 @@ At the bottom of this section, we provide information about the spritesheet itse
   #adRoot .cta-hover {
     color: #ffffff;
     background-color: #0000FF; }
-  #adRoot .bg-image {
+  #adRoot #bgImage, #adRoot .bg-image {
     position: absolute;
-    width: 150px;
-    height: 59px;
+    width: 300px;
+    height: 250px;
     left: 0;
+    background-repeat: no-repeat; }
+  #adRoot .bg-image {
     background-image: url("../img/logo.jpg"); }
   #adRoot .logo-sprite-retina {
     background-image: url("../img/collapsed-background-sprite.jpg");

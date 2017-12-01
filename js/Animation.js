@@ -28,7 +28,7 @@
         ctaButton.addEventListener('click', outHandler);
       };
   
-      window.endframe = function () {
+      window.endframe = function () { // this is used to show the end state of the ad, so that the dynamic ad generator can get a good screenshot.
         tl.seek(15)
       }
       

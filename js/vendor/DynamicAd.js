@@ -111,7 +111,7 @@ function DynamicAd() {
 			var imageElement = document.createElement('img');
 			imageElement.src = images[i];
 
-			document.getElementById('image-loader').appendChild(imageElement);
+			document.getElementById('image-hack').appendChild(imageElement);
 		    imageElement.onload = function(){
 		        imagesLoaded++;
 		        if(imagesLoaded == imageCount){

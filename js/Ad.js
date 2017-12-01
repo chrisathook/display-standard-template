@@ -41,7 +41,9 @@
 
     var setUpAd = function () {
       var callback = function () {
-        processSVG(window.bannerSvgData);
+        if(!window.previewData) { // if previewData exists then this ad is dynamic. SVGs are already being managed by the dynamic system.
+          processSVG(window.bannerSvgData);
+        }
         show();
         rootSource = document.getElementById("adRoot").cloneNode(true);
         currentAnimationKill = Animation();

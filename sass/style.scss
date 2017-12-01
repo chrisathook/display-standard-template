@@ -47,6 +47,12 @@ $cta-hover: #0000FF;
   img {
     position: absolute;
   }
+  #headline {
+    text-align: center;
+    margin: auto;
+    padding-top:70px;
+    color: #fff;
+  }
   .catch-all {
     @extend .size-collapsed;
     @extend .catch-all;
@@ -65,11 +71,14 @@ $cta-hover: #0000FF;
     color: #ffffff;
     background-color: $cta-hover;
   }
-  .bg-image {
+  #bgImage, .bg-image {
     position: absolute;
-    width: 150px;
-    height: 59px;
+    width: 300px;
+    height: 250px;
     left: 0;
+    background-repeat: no-repeat;
+  }
+  .bg-image {
     background-image: url('../img/logo.jpg');
   }
   .logo-sprite-retina {

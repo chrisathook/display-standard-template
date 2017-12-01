@@ -1,10 +1,10 @@
 function DynamicBootloader(callback) {
   function loadData() {
-    dynamicAd.onready = callback.call();
+    dynamicAd.onready = callback;
     dynamicAd.init();
   }
   
-  function loadPreview(rowNumber, callback) {
+  function loadPreview(rowNumber) {
     console.log("loadPreview");
     dataManager.onready = function () {
       console.log("loadPreview data loaded");
@@ -14,15 +14,13 @@ function DynamicBootloader(callback) {
     dataManager.init(sheetId, projectId);
   }
   
-  if (sheetId === '' || projectId === '') {
-    callback.call();
-    return
-  }
   if (downloadPreview) {
     loadPreview(previewNumber, loadData);
   } else if (window.previewData) {
     loadData()
   } else {
-    callback.call()
+    callback.call();
+    return;
   }
+  
 }
