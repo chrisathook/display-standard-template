@@ -10,7 +10,7 @@ $whitetrans: rgba(255, 255, 255, 0.01);
 $grey: #666666;
 $red: #ff0000;
 $cta-hover: #0000FF;
-@import 'template/standard-border';
+
 .size-collapsed {
   height: $collapsed-height;
   width: $collapsed-width;
@@ -47,8 +47,8 @@ $cta-hover: #0000FF;
   @extend .invisible;
   position: absolute;
   overflow: hidden;
-  top: 0;
-  left: 0;
+  top: -1px;
+  left: -1px;
   background-color: $grey;
   cursor: pointer;
   img {
@@ -113,4 +113,32 @@ $cta-hover: #0000FF;
   height: 1px;
   left: -40px;
   overflow: hidden;
+}
+#ad-root-wrapper {
+  position: absolute;
+  overflow: hidden;
+  top: 1px;
+  left: 1px;
+  background-color: white;
+
+
+}
+
+.wrapper-collapsed {
+  height: $collapsed-height - 2px;
+  width: $collapsed-width - 2px;
+
+}
+
+
+#background-border {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: black;
+
+
+
+
 }
