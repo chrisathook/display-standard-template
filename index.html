@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <meta name="template.type" content="DCM">
-  <meta name="bundle.static" content="in.folder"><!--Valid values are "in.zip" and "in.folder" -->
-  <meta name="ad.size" content="width=300,height=250"><!--Dimensions in Pixels-->
-  <meta name="ad.fileSize" content="200"><!--File Size of Final Zip in Kilobytes-->
-  <meta name="ad.numFiles" content="15"><!--Don't Edit-->
-  <meta name="ad.staticFileSize" content="40"><!--File Size of static backup in Kilobytes-->
-  <meta name="ad.compression" content="60"><!--compression for jpeg sprites-->
-  <meta name="ad.minifyhtml" content="true"><!--minify html file  set to false for sizmek-->
-  <title>HTML5 Template DCM Direct</title>
+  <meta name="template.type" content="DCStudio">
+  <meta name="bundle.static" content="in.zip">
+  <meta name="ad.size" content="width=300,height=250">
+  <meta name="ad.fileSize" content="200">
+  <meta name="ad.numFiles" content="15">
+  <meta name="ad.staticFileSize" content="40">
+  <meta name="ad.compression" content="60">
+  <meta name="ad.minifyhtml" content="true">
+  <title>HTML5 Template DC Studio</title>
   <link inline rel="stylesheet" type="text/css" href="css/style.css">
-  <script type="text/javascript">var clickTag = "https://www.google.com";</script>
+  <script type="text/javascript" src="https://s0.2mdn.net/ads/studio/Enabler.js"></script>
 </head>
 <body>
 <div id="image-hack"></div>
 <div id="background-border" class="size-collapsed"></div>
 <div id="ad-root-wrapper" class="wrapper-collapsed">
   <div id="adRoot" onclick="javascript:window.open(window.clickTag)">
-    <div class="bg-image"></div>
+    <div class="bg-image">{{bgColor}}</div>
     <div id="bgImage"></div>
     <div id="headline">demo headline</div>
     <div class="logo-sprite"></div>
@@ -30,6 +30,7 @@
     <div id="cta" class="cta hidden">click here!!!</div>
   </div>
 </div>
+
 <!--Uncomment this to use CDN version of Greensock, remove local version if you do this.  -->
 <!--<script src="https://s0.2mdn.net/ads/studio/cached_libs/tweenmax_1.19.0_643d6911392a3398cb1607993edabfa7_min.js"></script>-->
 <!-- build:js combined.js -->
@@ -51,7 +52,7 @@
   try {
     var dynamicAd = DynamicAd();
     var dataManager = DataManager();
-    var downloadPreview = false;
+    var downloadPreview = true;
     var previewNumber = 1;
     var sheetId = "1Z6z5t91qqYrFblYxC6AnHkP8duHGQrSaw9JoovZyBwI";
     var projectId = "000_Dynamic_Ad_Template";
@@ -59,21 +60,42 @@
   } catch (err) {
     console.log('Dynamics Engine Not Included, Proceed as standard');
   }
-
 </script>
-
-
 <script type="text/javascript">
+
   window.clickHandler = function () {
-    return 'Handler is silent';
+    Enabler.exit('exit', 'https://www.google.com'); // set initial URL here, can still be overwritten in DC Studio or DCM
   };
-  window.onload = function () {
+  var adVisibleFunc = function () {
+    console.log("Enabler VISIBLE");
+    Enabler.setProfileId(10024307);
     try {
       DynamicBootloader(window.ad.init);
     } catch (err) {
       console.log('Dynamics Engine Not Included, Proceed as standard');
       window.ad.init()
     }
+  };
+  var pageLoadedFunc = function () {
+    console.log("Enabler PAGE_LOADED");
+    if (!Enabler.isVisible()) {
+      Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, adVisibleFunc);
+    } else {
+      adVisibleFunc();
+    }
+  };
+  var enablerInitFunc = function () {
+    console.log("Enabler INIT");
+    if (!Enabler.isPageLoaded()) {
+      Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, pageLoadedFunc);
+    } else {
+      pageLoadedFunc();
+    }
+  };
+  if (!Enabler.isInitialized()) {
+    Enabler.addEventListener(studio.events.StudioEvent.INIT, enablerInitFunc);
+  } else {
+    enablerInitFunc();
   }
 </script>
 </body>

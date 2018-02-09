@@ -1,0 +1,25 @@
+{
+  "path": "",
+  "plugins": [
+    {
+      "title": "Ad Generator",
+      "name": "toolbelt-ad-generator",
+      "version": "0.0.14",
+      "type": "link",
+      "config": {
+        "width": 400,
+        "height": 492,
+        "devmode": true,
+        "hidden": false,
+        "sheetID": "1Z6z5t91qqYrFblYxC6AnHkP8duHGQrSaw9JoovZyBwI",
+        "projectID": "000_Dynamic_Ad_Template",
+        "staticQuality": "70",
+        "workareaPath": "S:\\Dropbox (hookerz)\\Display_Dynamic_Previewer_WorkArea",
+        "sourcePath": "S:\\000_Dynamic_Ad_Template",
+        "outputPath": "S:\\000_Dynamic_Ad_Template\\output",
+        "x": 9,
+        "y": 8
+      }
+    }
+  ]
+}

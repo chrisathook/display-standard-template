@@ -8,22 +8,45 @@ function DynamicAd() {
 
 
 	api.init = function(){
-		if(window.previewData){
+		console.log('DynamicAd init');
+		if(window.dynamicContent) { // if this variable exists, it means the ad is being loaded in DC Studio
+			window.previewData = transformDynamicContent();
+			renderData();
+		} else if(window.previewData){
 			renderData();
 		}
+	}
+
+	function transformDynamicContent(){
+		console.log('transforming dynamic content');
+		var data;
+		for(var key in window.dynamicContent) { 
+			if(key == '_profileid') continue;
+			// get first element of dynamicContent. this will be our data from the spreadsheet.
+			data = window.dynamicContent[key][0];
+			for(var key in data){ // convert dynamicContent into a flat object.
+				if(typeof data[key] == 'object' && data[key]['Url']) {
+					data[key] = data[key]['Url'];
+				}
+			}
+
+			break; 
+		}
+
+		return data;
 	}
 
 	function renderData(){
 		var images = [];
 		var svgs = [];
-		
+		console.log(JSON.stringify(previewData));
 		for(var key in previewData){
 			
 			if(key == 'label' || key == 'dimensions') continue;
 			
 			var value = previewData[key];
 
-			console.log(key, value);
+			console.log('key', key, value);
 			
 			if(key == 'clickTag') window.clickTag = value;
 
@@ -148,19 +171,23 @@ function DynamicAd() {
 
 	function inferType(element){
 		console.log('infer', element);
-		if(element.indexOf('.jpg') > -1 || element.indexOf('.png') > -1 || element.indexOf('.gif') > -1) {
-			return 'image';
-		}
+		if(typeof element == 'string') {
+			if(element.indexOf('.jpg') > -1 || element.indexOf('.png') > -1 || element.indexOf('.gif') > -1) {
+				return 'image';
+			}
 
-		if(element.indexOf('.svg') > -1) {
-			return 'svg'
-		}
+			if(element.indexOf('.svg') > -1) {
+				return 'svg'
+			}
 
-		if(element.indexOf('http://') > -1 || element.indexOf('https://') > -1) {
-			return 'url';
-		}
+			if(element.indexOf('http://') > -1 || element.indexOf('https://') > -1) {
+				return 'url';
+			}
 
-		return 'string';
+			return 'string';
+		} else {
+			return typeof element
+		}
 	}
 
 	function getDocument(url, callback) {  

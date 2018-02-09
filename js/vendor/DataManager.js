@@ -64,14 +64,21 @@ function DataManager(config) {
 
 				if(!headerName) break;
 
-				if(headerName.indexOf('*') > -1) { // This column has an asterisk, so we should use it for our label.
-					if(!dataObj.label) dataObj.label = row + ' ' + value;
-					else dataObj.label = dataObj.label + ' ' + value;
+				// if(headerName.indexOf('*') > -1) { // This column has an asterisk, so we should use it for our label.
+					// if(!dataObj.label) dataObj.label = row + ' ' + value;
+					// else dataObj.label = dataObj.label + ' ' + value;
+				// }
+
+				// headerName = headerName.replace('*', ''); // get rid of the asterisk.
+
+
+
+
+
+				if(value.indexOf('.jpg') > -1 || value.indexOf('.png') > -1 || value.indexOf('.gif') > -1 || value.indexOf('.svg') > -1) {
+					if(value[0] != '/') value = '/' + value;
+					value = imageLoadUrl + value;
 				}
-
-				headerName = headerName.replace('*', ''); // get rid of the asterisk.
-
-				if(value.indexOf('.jpg') > -1 || value.indexOf('.png') > -1 || value.indexOf('.gif') > -1 || value.indexOf('.svg') > -1) value = imageLoadUrl + value;
 
 				dataObj[headerName] = value;
 			}
