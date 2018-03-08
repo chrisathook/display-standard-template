@@ -146,8 +146,9 @@ function DynamicAd() {
 	}
 
 	function loadSVGs(svgs, callback){
-		if(svgs.length == 0) callback();
-
+		if(svgs.length == 0) return callback();
+		if(!window.dataManager) return callback();
+		
 		var svgCount = svgs.length;
 		var svgsLoaded = 0;
 

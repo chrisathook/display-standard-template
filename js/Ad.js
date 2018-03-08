@@ -30,7 +30,7 @@
         var processSVG = function(svgObj) {
             for (var prop in svgObj) {
                 try {
-                    writeHTML(document.getElementById(prop), svgObj[prop])
+                    writeHTML(document.getElementById(prop), window.dynamicTemplate.process(svgObj[prop]))
                 } catch (err) {
                   // handle dynamic SVGs
                     var success = false;
@@ -40,7 +40,7 @@
                         if (theDiv.hasAttribute('inject')) {
                             var theAttr = theDiv.getAttribute('inject');
                             if (theAttr.search(prop) !== -1) {
-                                writeHTML(theDiv, svgObj[prop]);
+                                writeHTML(theDiv, window.dynamicTemplate.process(svgObj[prop]));
                                 success = true;
                             }
                         }
