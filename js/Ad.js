@@ -30,7 +30,14 @@
         var processSVG = function(svgObj) {
             for (var prop in svgObj) {
                 try {
-                    writeHTML(document.getElementById(prop), window.dynamicTemplate.process(svgObj[prop]))
+                    // accomodate using dynamics or not
+                    if (typeof DynamicBootloader ==='object') {
+                        writeHTML(document.getElementById(prop), window.dynamicTemplate.process(svgObj[prop]))
+                    }else {
+                        writeHTML(document.getElementById(prop), svgObj[prop])
+                    }
+
+                    
                 } catch (err) {
                   // handle dynamic SVGs
                     var success = false;
