@@ -31,7 +31,7 @@
             for (var prop in svgObj) {
                 try {
                     // accomodate using dynamics or not
-                    if (typeof DynamicBootloader ==='object') {
+                    if (typeof DynamicBootloader ==='function') {
                         writeHTML(document.getElementById(prop), window.dynamicTemplate.process(svgObj[prop]))
                     }else {
                         writeHTML(document.getElementById(prop), svgObj[prop])
@@ -61,6 +61,7 @@
                 }
             }
         };
+
         var setUpAd = function() {
             var callback = function() {
                 processSVG(window.bannerSvgData);
