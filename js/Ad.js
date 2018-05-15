@@ -5,6 +5,7 @@
             console.log('Hello World ' + bowser.name + ' ' + bowser.version);
         } catch (err) {}
         var api = {};
+        var dynamicEnabled;
         var rootSource = null;
         var currentAnimationKill = null;
         var firstRun = false;
@@ -31,7 +32,7 @@
             for (var prop in svgObj) {
                 try {
                     // accomodate using dynamics or not
-                    if (typeof DynamicBootloader ==='function') {
+                    if (dynamicEnabled) {
                         writeHTML(document.getElementById(prop), window.dynamicTemplate.process(svgObj[prop]))
                     }else {
                         writeHTML(document.getElementById(prop), svgObj[prop])
@@ -39,6 +40,7 @@
 
                     
                 } catch (err) {
+                    console.log('dynamicEnabled', dynamicEnabled);
                   // handle dynamic SVGs
                     var success = false;
                     var divs = document.getElementsByTagName("div");
@@ -53,10 +55,10 @@
                         }
                     }
                     if (success) {
-                        console.log('DYNAMIC SVG INLINED', prop + ".svg");
+                        console.log('Ad Template: Dynamic SVG Inlined:', prop + ".svg");
                     } else {
-                        console.error('SVG Loading Failed', prop + ".svg");
-                        console.error(err);
+                        console.warn('Ad Template: Could not add SVG file:',prop + '.svg. No element found with ID #'+prop);
+                        // console.error(err);
                     }
                 }
             }
@@ -72,10 +74,12 @@
             var loader = window.svgImageLoader;
             loader(window.bannerSvgData, callback);
         };
-        api.init = function() {
+        api.init = function(isDynamicEnabled) {
             if (firstRun) {
                 return
             }
+
+            dynamicEnabled = isDynamicEnabled;
             firstRun = true;
             console.log('ad int');
             setUpAd();

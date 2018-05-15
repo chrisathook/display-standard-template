@@ -69,12 +69,7 @@
     return 'Handler is silent';
   };
   window.onload = function () {
-    try {
-      DynamicBootloader(window.ad.init);
-    } catch (err) {
-      console.log('Dynamics Engine Not Included, Proceed as standard');
-      window.ad.init()
-    }
+    DynamicBootloader(window.ad.init);
   }
 </script>
 </body>
