@@ -1,8 +1,8 @@
 function DataManager(config) {
 	var sheetId;
 	var projectId;
-	var sheetserverURL = 'https://atomic-byway-131414.appspot.com/';
-	var dropboxFolder = '/Display_Dynamic_Previewer_WorkArea/';
+	var sheetServerURL = 'https://us-central1-hook-ad-hub.cloudfunctions.net/GetSheetData/';
+	var imageServerURL = 'http://ftp3.hookfilez.com/Previewer/assets/';
 
 	var sheetLoadUrl = '';
 	var imageLoadUrl = '';
@@ -22,8 +22,8 @@ function DataManager(config) {
 		console.log('init', sheetId, projectId, sheetId && projectId);
 		if(sheetId && projectId){
 
-			imageLoadUrl = sheetserverURL + '?action=getImage&path=' + dropboxFolder + projectId + '&filename=';
-			sheetLoadUrl = sheetserverURL + '?action=getSheet&sheetId=' + sheetId + '&tabName=Sheet1';
+			imageLoadUrl = imageServerURL + projectId + '/';
+			sheetLoadUrl = sheetServerURL + '?sheetId=' + sheetId + '&tabName=Sheet1';
 
 			loadJSON(sheetLoadUrl, start);
 		}
