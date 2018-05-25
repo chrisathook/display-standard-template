@@ -24,7 +24,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		priority: 1,
 		API: 2,
 		version: "0.1.0",
-		overwriteProps: ["rotation", "z", "transformPerspective"],
+		overwriteProps: ["rotation", "z"],
 		init: function(target, value, tween, index) {
 
 			if(!value) {
@@ -41,8 +41,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 
 			var tweenObject = {
 				"rotation": 0.01, 
-				"z": 0.1, 
-				"transformPerspective": 1000
+				"z": 0.1
 			}
 
 			if (isIE || isSafari || isEdge) {
