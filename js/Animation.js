@@ -3,7 +3,20 @@
   var Animation = function () {
     
     var smoothdivs = document.getElementById('adRoot').querySelectorAll('div');
-    TweenLite.set(smoothdivs, {smoothify: true});
+        if (bowser.chrome && bowser.version > 63) {
+       //alert('Hello Chrome64');
+       TweenMax.set('svg path', {y:"-=.1"});
+       TweenMax.set('svg circ', {y:"-=.1"});
+       TweenMax.set('svg rect', {y:"-=.1"});
+// add transformPerspective: 1000 if no 3D and scaling images
+       TweenMax.set(smoothdivs, {smoothify: false});
+    } else {
+		  TweenMax.set('svg g', {rotation: "+=0.01"});
+          TweenMax.set('svg path', {rotation: "+=0.01"});
+          TweenMax.set('svg rect', {rotation: "+=0.01"});
+          TweenMax.set('svg circ', {rotation: "+=0.01"});
+		  TweenMax.set(smoothdivs, {smoothify: true});
+       }
     
     // do all your animation in this function. Including any calls to get DOM elements.
     var render = function () {
