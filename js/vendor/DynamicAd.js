@@ -46,29 +46,29 @@ function DynamicAd() {
 			
 			var value = previewData[key];
 
-			console.log('key', key, value);
+			// console.log('key', key, value);
 			
 			if(key == 'clickTag') window.clickTag = value;
 
 			if(inferType(value) == 'image') {
 				var element = document.getElementById(key);
 				if(!element) {
-					console.log('DynamicAd Error: Could not bind "' + key + '" to element.');
+					console.warn('DynamicAd Warning: Could not bind "' + key + '". Not found: Matching Template String: {{'+key+'}} or Element ID: #'+key+'');
 					continue
 				}
 				if(element.tagName == 'IMG') element.src = value;
 				if(element.tagName == 'DIV') element.style.backgroundImage = 'url('+value+')';
-				images.push(value);
+				images.push({id: key, url:value});
 			}
 
 			if(inferType(value) == 'svg') {
 				var element = document.getElementById(key);
 				if(!element) {
-					console.log('DynamicAd Error: Could not bind "' + key + '" to element.');
+					console.warn('DynamicAd Warning: Could not bind "' + key + '". Not found: Matching Template String: {{'+key+'}} or Element ID: #'+key+'');
 					continue
 				}
 				if(element.tagName == 'IMG') { 
-					images.push(value);
+					images.push({id: key, url:value});
 					element.src = value;
 				}
 				if(element.tagName == 'DIV') {
@@ -82,7 +82,7 @@ function DynamicAd() {
 			if(inferType(value) == 'string') {
 				var element = document.getElementById(key);
 				if(!element) {
-					console.log('DynamicAd Error: Could not bind "' + key + '" to element.');
+					console.warn('DynamicAd Warning: Could not bind "' + key + '". Not found: Matching Template String: {{'+key+'}} or Element ID: #'+key+'');
 					continue
 				}
 				element.innerHTML = value;
@@ -132,13 +132,26 @@ function DynamicAd() {
 
 		for(var i=0; i<imageCount; i++){
 			var imageElement = document.createElement('img');
-			imageElement.src = images[i];
+			var image = images[i];
+			imageElement.src = image.url;
 
 			document.getElementById('image-hack').appendChild(imageElement);
 		    imageElement.onload = function(){
 		        imagesLoaded++;
 		        if(imagesLoaded == imageCount){
-		        	console.log('image loaded', images[i]);
+		        	console.log('image loaded', image.id);
+		        	var elem = document.getElementById(image.id);
+		        	var computedWidth = window.getComputedStyle(elem,null).getPropertyValue("width");
+		        	console.log('computedWidth',computedWidth);
+		        	var isSizeSet = computedWidth != '0px';
+
+		        	if(isSizeSet == false) { // this element's size isn't being set by CSS so lets set it to the source image size
+		        		elem.style.height = imageElement.height + 'px';
+		        		elem.style.width = imageElement.width + 'px';
+		        	}
+
+		        	elem.style.backgroundSize = 'contain';
+		        	
 		            callback();
 		        }
 		    }
@@ -171,7 +184,7 @@ function DynamicAd() {
 	}
 
 	function inferType(element){
-		console.log('infer', element);
+		// console.log('infer', element);
 		if(typeof element == 'string') {
 			if(element.indexOf('.jpg') > -1 || element.indexOf('.png') > -1 || element.indexOf('.gif') > -1) {
 				return 'image';

@@ -38,9 +38,9 @@
 <script type="text/javascript" src="js/vendor/bowser.min.js"></script><!-- If you don't need this you can remove it -->
 <script type="text/javascript" src="js/vendor/greensock/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/vendor/SmoothifyPlugin.js"></script>
-<script type="text/javascript" src="js/vendor/DynamicTemplate.js"></script>
-<script type="text/javascript" src="js/vendor/DynamicAd.js"></script> 
-<script type="text/javascript" src="js/vendor/DataManager.js"></script>
+<script type="text/javascript" src="js/vendor/DynamicAd.js"></script> <!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DataManager.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
+<script type="text/javascript" src="js/vendor/DynamicTemplate.js"></script><!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
 <script type="text/javascript" src="js/vendor/DynamicBootloader.js"></script>
 <!-- REMOVE IF YOU ARE NOT DOING DYNAMICS -->
 <script type="text/javascript" src="js/svglib.js"></script>
@@ -54,7 +54,7 @@
   try {
     var dynamicAd = DynamicAd();
     var dataManager = DataManager();
-    var downloadPreview = true;
+    var downloadPreview = false;
     var previewNumber = 1;
     var sheetId = "1lM5IZu_bPKaS3qjBFPoPxZ15oqVx7-V6qPoWK7karls";
     var projectId = "000_test_ad";

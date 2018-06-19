@@ -2,7 +2,7 @@ function DataManager(config) {
 	var sheetId;
 	var projectId;
 	var sheetServerURL = 'https://us-central1-hook-ad-hub.cloudfunctions.net/GetSheetData/';
-	var imageServerURL = 'http://ftp3.hookfilez.com/Previewer/assets/';
+	var projectServerURL = 'http://adhub.hookfilez.com/projects/';
 
 	var sheetLoadUrl = '';
 	var imageLoadUrl = '';
@@ -22,7 +22,7 @@ function DataManager(config) {
 		console.log('init', sheetId, projectId, sheetId && projectId);
 		if(sheetId && projectId){
 
-			imageLoadUrl = imageServerURL + projectId + '/';
+			imageLoadUrl = projectServerURL + projectId + '/assets';
 			sheetLoadUrl = sheetServerURL + '?sheetId=' + sheetId + '&tabName=Sheet1';
 
 			loadJSON(sheetLoadUrl, start);
