@@ -44,6 +44,17 @@
       window.endframe = function () { // this is used to show the end state of the ad, so that the dynamic ad generator can get a good screenshot.
         tl.seek(15)
       }
+          console.log('!!! BROWSER CHECK', bowser.name, bowser.safari, parseFloat(bowser.version));
+    if (bowser.safari === true && parseFloat(bowser.version) >= 12) {
+        console.log("!!!!! safari timing hack");
+        window.addEventListener('blur', function () {
+            console.log("!!!!! Timing Hack Engaged");
+            TweenMax.ticker.useRAF(false);
+//    TweenMax.ticker.fps(60);
+            TweenMax.lagSmoothing(0);
+        });
+    }
+      
       
       var tl = null;
       // make additional timeline here.
